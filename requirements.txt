@@ -1,2 +1,5 @@
 flask
 pytest
+black
+flake8
+bandit
