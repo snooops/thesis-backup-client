@@ -40,35 +40,14 @@ def backup() -> dict:
 def recursive_scan_dir(path: str) -> dict:
     """Scans the given path recursive for files and directories.
     Returns a dict with the following structure:
-    file_list = {
-            "items": [
-                {
-                    "name": "example-file.md",
-                    "type": "file"
-                },
-                {
-                    "name": "Documents",
-                    "type": "directory",
-                    "items": [
-                        {
-                            "name": "readme.md",
-                            "type": "file"
-                        }
-                    ]
-                }
-            ]
-        }
     """
-    
-    file_list = {}
-
+    file_list = {
+        "name": path,
+        "type": "directory",
+        "items": []
+    }
     # scan through the list of files.
     with os.scandir(path) as it:
-        file_list = {
-                "name": path,
-                "type": "directory",
-                "items": []
-            }
         
         # loop through the found entries in path
         for entry in it:
@@ -87,14 +66,10 @@ def recursive_scan_dir(path: str) -> dict:
             
             # if it's not a file, it's a directory, call itself with the the path
             # and search for files.
-            print (f"Path {path}")
-            print (f"Entry {entry.name}")
-
-            # call itself with the new path for a directory
             element = recursive_scan_dir(f"{path}/{entry.name}")
-            
+
             # append it to the file list
             file_list["items"].append(element)
-        
-        # return file_list
-        return file_list
+
+    # return file_list
+    return file_list

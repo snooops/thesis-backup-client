@@ -1,4 +1,24 @@
 {
-    "type": "filelist",
-    "path": "/home/snooops/thesis-backup-test-dir"
+    "title": "File List",
+    "id": "file_list",
+    "description": "A list of files and folders",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Name of the file or folder"
+        },
+        "type": {
+            "type": "string",
+            "description": "specifies if it's a file or a directory"
+        },
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "#"
+            }
+        }
+    },
+    "required": [ "name", "type" ]
 }

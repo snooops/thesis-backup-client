@@ -1,5 +1,35 @@
-[build-system]
-requires = ["setuptools", "wheel"]
+[project]
+name = "thesis-backup-client"
+authors = [
+    {name = "Dennis Meyer", email = "snooops@dns-serve.de"},
+]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Framework :: Flask",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+    ]
+
+dependencies = [
+    "jsonschema",
+    "Flask==3.0.2",
+]
+version = "0.1"
+
+[project.optional-dependencies]
+test = [
+    "black",
+    "flake8",
+    "bandit",
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/snooops/thesis-backup-client"
+Respository = "https://github.com/snooops/thesis-backup-client.git"
 
 [tool.black]
 line-length = 88
