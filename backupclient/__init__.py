@@ -23,5 +23,13 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+    
+    @app.route('/ping')
+    def test_page():
+        info = {
+            'message': 'pong',
+            'version': 'v0.1'
+        }
+        return info
 
     return app

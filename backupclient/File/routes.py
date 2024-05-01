@@ -41,9 +41,15 @@ def recursive_scan_dir(path: str) -> dict:
     """Scans the given path recursive for files and directories.
     Returns a dict with the following structure:
     """
+    stat = os.stat(path)
     file_list = {
         "name": path,
         "type": "directory",
+        "stat": {
+            "modified": stat.st_mtime_ns,
+            "changed": stat.st_ctime_ns,
+            "size": stat.st_size
+        },
         "items": []
     }
     # scan through the list of files.
@@ -57,7 +63,12 @@ def recursive_scan_dir(path: str) -> dict:
                 # build dict
                 file = {
                         "name": entry.name,
-                        "type": "file"
+                        "type": "file",
+                        "stat": {
+                            "modified": stat.st_mtime_ns,
+                            "changed": stat.st_ctime_ns,
+                            "size": stat.st_size
+                        },
                     }
                 
                 # append dict to file_list dict
