@@ -1,0 +1,21 @@
+# compile:
+# d2 --font-regular=C:\Windows\Fonts\times.ttf --font-bold=C:\Windows\Fonts\timesbd.ttf --font-italic=C:\Windows\Fonts\timesi.ttf -t 1 -w .\setup-testing-architecture.d2 .\setup-testing-architecture.png
+vars: {
+
+    d2-config: {
+  
+      layout-engine: elk
+    }
+}
+
+qs: Quellsystem {
+    ip: 192.168.1.202
+}
+zs: Zielsystem {
+    ip: 192.168.1.203
+}
+
+netzwerk: Netzwerk
+
+qs.ip <-> netzwerk: 1gbit
+zs.ip <-> netzwerk: 1gbit

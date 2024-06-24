@@ -1,0 +1,13 @@
+shape: sequence_diagram
+
+
+bs: Backup Server
+bc: Backup Client
+bc.generate_filelist: Aufbereitung einer Datei-/Verzeichnisliste die zu sichern ist.
+bs -> bc.generate_filelist: POST /generate_file_list
+bc.generate_filelist -> bs: JSON Date Liste
+
+Iterierung durch empfangene JSON Datei Liste: {
+    bs -> bc.download: POST /download
+    bc.download -> bs: Dateistream
+}

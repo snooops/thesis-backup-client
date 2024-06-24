@@ -1,0 +1,12 @@
+# compile:
+# d2 --font-regular=C:\Windows\Fonts\times.ttf --font-bold=C:\Windows\Fonts\timesbd.ttf --font-italic=C:\Windows\Fonts\timesi.ttf -t 1 -w .\borg-architecture-diagram.d2 .\borg-architecture-diagram.png
+is: IT System
+is {
+    bi: borg init borguser@192.168.1.200:/backup-repository
+}
+bs: Backup Speicher
+bs {
+    ip: IP Adresse und Port \n192.168.1.200:22
+}
+
+is.bi -> bs.ip: ssh

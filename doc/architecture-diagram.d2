@@ -1,0 +1,9 @@
+# compile:
+# d2 --font-regular=C:\Windows\Fonts\times.ttf --font-bold=C:\Windows\Fonts\timesbd.ttf --font-italic=C:\Windows\Fonts\timesi.ttf -t 1 -w .\architecture-diagram.d2 .\architecture-diagram.png
+bs: Backup Server
+bc: Backup Ziel
+bc {
+    ip: IP Adresse und Port \n192.168.1.200:8000
+}
+
+bs -> bc.ip: HTTP Verbindung

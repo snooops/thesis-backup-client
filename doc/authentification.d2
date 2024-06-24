@@ -1,0 +1,16 @@
+shape: sequence_diagram
+
+# compile:
+# d2 --font-regular=C:\Windows\Fonts\times.ttf --font-italic=C:\Windows\Fonts\timesi.ttf --font-bold=C:\Windows\Fonts\timesbd.ttf -t 1 -w .\authentification.d2 .\authentification.png
+bs: Backup Server
+bc: Backup Ziel
+as: Authentisierungsserver
+
+
+bs -> as.token: Anfrage eines Zugriffstoken
+as.token -> bs: Zugriffstoken
+
+bs -> bc.rh: Backup Anfrage\nmit Zugriffstoken
+bc.rh -> as.tv: Validierung des\nZugriffstoken
+as.tv -> bc.rh: Bestätigung
+bc.rh -> bs: Antwort der Anfrage
