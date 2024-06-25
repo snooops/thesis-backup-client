@@ -24,6 +24,7 @@ def create_app(test_config=None):
     except OSError:
         pass
     
+    # A simple endpoint to check if the application booted successfully
     @app.route('/ping')
     def test_page():
         info = {
