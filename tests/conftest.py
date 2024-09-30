@@ -29,9 +29,9 @@ def generate_backup_data(backup_path):
         f.write('Lorem Ipsum dolor sit amet.')
 
     # now create a binary file
-    subprocess.check_output(
-        ['dd', 'if=/dev/zero', f'of={backup_path}/binary.img', 'bs=64k', 'count=64'], stderr=subprocess.STDOUT)
-    
+    summary = subprocess.check_output(
+        ['dd', 'if=/dev/zero', f'of={backup_path}/binary.img', 'bs=64k', 'count=128'], stderr=subprocess.STDOUT)
+
     yield backup_path
 
     shutil.rmtree(backup_path)
